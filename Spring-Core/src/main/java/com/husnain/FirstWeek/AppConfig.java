@@ -13,4 +13,9 @@ public class AppConfig {
     public Manager manager(){
         return new Manager();
     }
+    @Bean(initMethod = "init",destroyMethod =
+            "stop")
+    public callbackMethod initMethod() {
+        return new callbackMethod();
+    }
 }

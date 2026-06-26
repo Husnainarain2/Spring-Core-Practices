@@ -18,4 +18,8 @@ public class awareInterface implements BeanNameAware, ApplicationContextAware {
     public void setApplicationContext(org.springframework.context.ApplicationContext applicationContext) throws org.springframework.beans.BeansException {
         System.out.println("ApplicationContext is set: " + applicationContext.getClass().getName());
     }
+
+    //Aware interface which have  callback
+    // method ,Ioc container called their
+    // method automatically
 }

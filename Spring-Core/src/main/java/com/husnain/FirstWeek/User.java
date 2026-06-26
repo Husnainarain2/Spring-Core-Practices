@@ -14,4 +14,7 @@ public class User {
                 "tha :");
         manager.managerMethod();
     }
+
+    // i have two possible ways to create a
+    // bean in spring framework one is by using @Component annotation and other is by using @Bean annotation in AppConfig class
 }
