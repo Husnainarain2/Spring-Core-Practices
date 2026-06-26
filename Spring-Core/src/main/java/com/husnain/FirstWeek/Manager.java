@@ -5,6 +5,6 @@ public class Manager {
         System.out.println("Manager Constructor");
     }
      public void managerMethod(){
-        System.out.println("Manager Method");
+        System.out.print("Manager Method");
      }
 }

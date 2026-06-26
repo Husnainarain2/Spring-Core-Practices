@@ -1,6 +1,7 @@
 package com.husnain;
 
 import com.husnain.FirstWeek.AppConfig;
+import com.husnain.FirstWeek.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello Welcome to Spring Framework");
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
+        User user=context.getBean(User.class);
+        user.userMethod();
     }
 }
