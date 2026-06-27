@@ -10,12 +10,19 @@ import org.springframework.context.annotation.Scope;
 public class AppConfig {
     @Bean
     @Scope("prototype")
-    public Manager manager(){
+    public Manager manager() {
         return new Manager();
     }
-    @Bean(initMethod = "init",destroyMethod =
+
+    @Bean(initMethod = "init", destroyMethod =
             "stop")
     public callbackMethod initMethod() {
         return new callbackMethod();
     }
 }
+//    @Bean(initMethod = "init")
+//    public callbackMethod initMethod(){
+//        return new callbackMethod();
+//    }
+//}
+

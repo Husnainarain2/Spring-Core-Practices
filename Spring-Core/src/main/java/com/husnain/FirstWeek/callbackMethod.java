@@ -1,6 +1,7 @@
 package com.husnain.FirstWeek;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -50,12 +51,18 @@ public class callbackMethod
                 this.map.put(4,"Four");
                 this.map.put(5,"Five");
             }
-
+ // *************** Destory ************
             public void stop(){
                 System.out.println("stopMethod called");
                 this.map.clear();
             }
-}
+
+//            @Override
+//            public void destroy() throws Exception {
+//            System.out.println("destroy method called");
+//                this.map.clear();
+//            }
+        }
 
 // Three Common Ways to Write Initialization Logi
 // first is @PostConstructor way
