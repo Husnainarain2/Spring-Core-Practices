@@ -8,11 +8,10 @@ public class OrderService {
 
 
     PaymentMethod paymentMethod;
+
     public OrderService(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
-
-
 
 //    private PaymentService paymentService;
 //    public OrderService(PaymentService paymentService) {
