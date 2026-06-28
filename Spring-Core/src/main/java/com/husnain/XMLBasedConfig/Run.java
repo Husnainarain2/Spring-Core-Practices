@@ -5,11 +5,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Run {
     public static void main(String[] args) {
-        ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext context=
+                new ClassPathXmlApplicationContext("applicationContext.xml");
 //        OrderService orderService = (OrderService) context.getBean("orderService");
 //        OrderService orderService2= context.getBean(OrderService.class);
-        OrderService orderService3=context.getBean("orderService", OrderService.class);
-        orderService3.placeOrder();
+//        OrderService orderService3=context.getBean("orderService", OrderService.class);
+//        orderService3.placeOrder();
+        OrderService orderService = (OrderService) context.getBean("orderService");
+        orderService.placeOrder();
+
+        beanLIfeCycle lifeCycle =
+                context.getBean("beanLifeCycle"
+                        ,beanLIfeCycle.class);
+        lifeCycle.check();
+
+        context.close();
 
     }
 }

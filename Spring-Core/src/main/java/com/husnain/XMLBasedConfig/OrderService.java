@@ -1,11 +1,16 @@
 package com.husnain.XMLBasedConfig;
 
 public class OrderService {
-    private PaymentMethod paymentMethod;
+//    private PaymentMethod paymentMethod;
+//    public OrderService(PaymentMethod paymentMethod) {
+//        this.paymentMethod = paymentMethod;
+//    }
+
+
+    PaymentMethod paymentMethod;
     public OrderService(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
-
 
 
 

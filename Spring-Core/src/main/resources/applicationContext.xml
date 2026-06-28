@@ -3,15 +3,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
 <bean id="PaymentService"
       class="com.husnain.XMLBasedConfig.PaymentService">
     <constructor-arg index="0" value="Jazzcash"
     />
 </bean>
     <bean id="JazzCash"
-          class="com.husnain.XMLBasedConfig.Jazzcash">
+          class="com.husnain.XMLBasedConfig.Jazzcash "
+          primary="true">
 
     </bean>
+    <bean id="Nayapay"
+          class="com.husnain.XMLBasedConfig.NayaPay"
+    />
  <bean id="orderService"
        class="com.husnain.XMLBasedConfig.OrderService">
      <constructor-arg ref="JazzCash"/>
@@ -20,6 +26,10 @@
 
 <!--     <constructor-arg ref="PaymentService"/>-->
  </bean>
+
+    <bean id="beanLifeCycle"
+          class="com.husnain.XMLBasedConfig.beanLIfeCycle" init-method="init" destroy-method="destroy">
+    </bean>
 
 
 </beans>
