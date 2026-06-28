@@ -8,11 +8,18 @@
     <constructor-arg index="0" value="Jazzcash"
     />
 </bean>
+    <bean id="JazzCash"
+          class="com.husnain.XMLBasedConfig.Jazzcash">
+
+    </bean>
  <bean id="orderService"
        class="com.husnain.XMLBasedConfig.OrderService">
-     <property name="PaymentService" ref="PaymentService"/>
+     <constructor-arg ref="JazzCash"/>
+
+<!--     <property name="PaymentService" ref="PaymentService"/>-->
 
 <!--     <constructor-arg ref="PaymentService"/>-->
  </bean>
+
 
 </beans>
