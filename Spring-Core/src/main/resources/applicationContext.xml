@@ -5,10 +5,14 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <bean id="PaymentService"
       class="com.husnain.XMLBasedConfig.PaymentService">
+    <constructor-arg index="0" value="Jazzcash"
+    />
 </bean>
  <bean id="orderService"
        class="com.husnain.XMLBasedConfig.OrderService">
-     <constructor-arg ref="PaymentService"/>
+     <property name="PaymentService" ref="PaymentService"/>
+
+<!--     <constructor-arg ref="PaymentService"/>-->
  </bean>
 
 </beans>
