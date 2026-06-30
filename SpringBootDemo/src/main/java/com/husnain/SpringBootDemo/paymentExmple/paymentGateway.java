@@ -37,7 +37,8 @@ public class paymentGateway {
         System.out.println("Payment Gateway Count: " + paymentDetails.getCount());
         System.out.println("Payment Gateway Amount: " + paymentDetails.getAmount());
         System.out.println("Payment Gateway Time Stamp: " + paymentDetails.getTimeStamp());
-        System.out.println("Payment Gateway Currency: " + paymentDetails.getCurrency());
+        System.out.println("Payment Gateway " +
+                "Currency: " + paymentDetails.getCurrency());
     }
 
 }
@@ -65,3 +66,8 @@ public class paymentGateway {
 //    public void setCount(String count) {
 //        this.count = count;
 //    }
+
+
+/* sett the variable value from application
+.properties file
+ */
