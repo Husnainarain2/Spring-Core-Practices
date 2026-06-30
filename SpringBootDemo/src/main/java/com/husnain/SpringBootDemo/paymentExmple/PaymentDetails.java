@@ -1,7 +1,9 @@
 package com.husnain.SpringBootDemo.paymentExmple;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConfigurationProperties(prefix = "payment")
 public class PaymentDetails {
     private String type;
@@ -10,13 +12,13 @@ public class PaymentDetails {
     private int timeStamp;
     private String currency;
 
-    public PaymentDetails(int count, String type, int amount, int timeStamp, String currency) {
-        this.count = count;
-        this.type = type;
-        this.amount = amount;
-        this.timeStamp = timeStamp;
-        this.currency = currency;
-    }
+//    public PaymentDetails(int count, String type, int amount, int timeStamp, String currency) {
+//        this.count = count;
+//        this.type = type;
+//        this.amount = amount;
+//        this.timeStamp = timeStamp;
+//        this.currency = currency;
+//    }
 
     public String getType() {
         return type;

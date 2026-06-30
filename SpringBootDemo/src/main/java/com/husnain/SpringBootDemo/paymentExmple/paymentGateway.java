@@ -32,6 +32,14 @@ public class paymentGateway {
         return paymentDetails.getCurrency();
     }
 
+    public void printPaymentDetails() {
+        System.out.println("Payment Gateway Type: " + paymentDetails.getType());
+        System.out.println("Payment Gateway Count: " + paymentDetails.getCount());
+        System.out.println("Payment Gateway Amount: " + paymentDetails.getAmount());
+        System.out.println("Payment Gateway Time Stamp: " + paymentDetails.getTimeStamp());
+        System.out.println("Payment Gateway Currency: " + paymentDetails.getCurrency());
+    }
+
 }
 
 /* -----------  @Value Method ----------*/
@@ -46,17 +54,13 @@ public class paymentGateway {
 //        this.count = count;
 //    }
 //
-//    public String getType() {
-//        return type;
-//    }
+//
 //
 //    public void setType(String type) {
 //        this.type = type;
 //    }
 //
-//    public String getCount() {
-//        return count;
-//    }
+//
 //
 //    public void setCount(String count) {
 //        this.count = count;
