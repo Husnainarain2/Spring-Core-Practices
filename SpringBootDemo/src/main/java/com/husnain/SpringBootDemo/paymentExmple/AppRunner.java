@@ -1,17 +1,19 @@
-package com.husnain.SpringBootDemo;
+package com.husnain.SpringBootDemo.paymentExmple;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AppRunner implements CommandLineRunner {
-    private First first;
-    public AppRunner(First first) {
-        System.out.println("AppRunner instance created.");
-        this.first = first;
+
+    private final paymentGateway paymentGateway;
+
+    public AppRunner(paymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
     }
+
     @Override
     public void run(String... args) throws Exception {
-        first.first();
+        paymentGateway.printPaymentDetails();
     }
 }
