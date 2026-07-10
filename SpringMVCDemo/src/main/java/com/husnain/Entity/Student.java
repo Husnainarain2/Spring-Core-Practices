@@ -1,6 +1,6 @@
 package com.husnain.Entity;
 
-public class Srudent {
+public class Student {
 
     private Long id;
     private String name;
