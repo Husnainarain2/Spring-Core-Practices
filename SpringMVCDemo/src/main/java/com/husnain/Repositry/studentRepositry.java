@@ -21,11 +21,17 @@ public class studentRepositry {
     public Student findById(Long id) {
         return (Student) studentDB.get(id);
     }
-    public List<Student> findAll() {
-       return new ArrayList<Student>(studentDB.values());
+    public ArrayList<Object> findAll() {
+        return new ArrayList<>(studentDB.values());
     }
-    public void deleteById(Long id) {
-        studentDB.remove(id);
+    public boolean deleteById(Long id) {
+        if (studentDB.containsKey(id)) {
+            studentDB.remove(id);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     public void update(Student studentReq) {
         studentDB.put(studentReq.getId(), studentReq);
