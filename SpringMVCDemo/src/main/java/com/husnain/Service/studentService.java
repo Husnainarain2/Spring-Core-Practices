@@ -20,14 +20,21 @@ public class studentService {
     public Student findStudentById(Long id) {
         return studentRepositry.findById(id);
     }
-    public ArrayList<Object> findAllStudent() {
+    public List<Student> findAllStudents() {
         return studentRepositry.findAll();
     }
     public boolean deleteStudentById(Long id) {
         return studentRepositry.deleteById(id);
     }
-    public void updateStudent(Student studentReq) {
-        studentRepositry.update(studentReq);
+    public Student updateStudent(Long id, Student studentReq) {
+        Student existingStudent = studentRepositry.findById(id);
+        if (existingStudent != null) {
+            existingStudent.setName(studentReq.getName());
+            existingStudent.setEmail(studentReq.getEmail());
+            existingStudent.setId(studentReq.getId());
+            return studentRepositry.save(existingStudent);
+        }
+        return null;
     }
 
 }

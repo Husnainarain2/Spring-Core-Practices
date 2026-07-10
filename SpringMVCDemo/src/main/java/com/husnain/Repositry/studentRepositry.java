@@ -9,9 +9,9 @@ import java.util.Map;
 
 @Repository
 public class studentRepositry {
-    private Map<Long, Object> studentDB;
+    private Map<Long, Student> studentDB;
 
-    public studentRepositry(Map<Long, Object> studentDB) {
+    public studentRepositry(Map<Long, Student> studentDB) {
         this.studentDB = studentDB;
     }
     public Student save(Student studentReq) {
@@ -19,9 +19,9 @@ public class studentRepositry {
         return studentReq;
     }
     public Student findById(Long id) {
-        return (Student) studentDB.get(id);
+        return studentDB.get(id);
     }
-    public ArrayList<Object> findAll() {
+    public List<Student> findAll(){
         return new ArrayList<>(studentDB.values());
     }
     public boolean deleteById(Long id) {
