@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>in.strikes</groupId>
-    <artifactId>profileDemo</artifactId>
+    <artifactId>ProfileDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name/>
     <description/>
