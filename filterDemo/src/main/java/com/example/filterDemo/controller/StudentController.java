@@ -18,9 +18,9 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         studentSerivce.createStudent(student);
-        return ResponseEntity.ok("Student created successfully!");
+        return ResponseEntity.ok(student);
     }
 
 }
