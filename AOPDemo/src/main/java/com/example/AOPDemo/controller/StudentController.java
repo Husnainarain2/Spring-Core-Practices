@@ -23,7 +23,9 @@ public class StudentController {
     }
     @GetMapping
     public ResponseEntity<String> get() {
-        String result = studentService.getStudent();
+        String para = "All the students Data ";
+        String result =
+                studentService.getStudent(para);
         return ResponseEntity.ok(result);
     }
 }

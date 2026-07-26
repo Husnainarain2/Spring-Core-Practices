@@ -61,9 +61,18 @@ public class LoggingAspects {
 //        return result;
 //    }
 
-    @Before("execution(public String com.example.AOPDemo.service.StudentService.getStudent())")
-    public void logGet(JoinPoint joinPoint) {
-        System.out.println("Logging get method call");
+//    @Before("execution(String com" +
+//            ".example" +
+//            ".AOPDemo.service.StudentService" +
+//            ".getStudent(String))")
+//    public void logGet() {
+//        System.out.println("Logging get method call");
+//    }
+
+    @Before("execution(* com.example.AOPDemo." +
+            ".get*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Logging before method call: " + joinPoint.getSignature().getName());
     }
 }
 

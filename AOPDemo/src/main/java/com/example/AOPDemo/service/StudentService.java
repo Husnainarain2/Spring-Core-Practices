@@ -13,8 +13,8 @@ public class StudentService {
         System.out.println("Creating student: " + studentDto.getName());
         return studentDto;
     }
-    public String getStudent() {
+    public String getStudent(String p) {
         System.out.println("Getting student");
-        return "Hello World";
+        return p;
     }
 }
