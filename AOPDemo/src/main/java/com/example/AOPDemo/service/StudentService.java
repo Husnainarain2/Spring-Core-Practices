@@ -13,4 +13,8 @@ public class StudentService {
         System.out.println("Creating student: " + studentDto.getName());
         return studentDto;
     }
+    public String getStudent() {
+        System.out.println("Getting student");
+        return "Hello World";
+    }
 }
