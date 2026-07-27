@@ -76,11 +76,17 @@ public class LoggingAspects {
 //    }
 
 
-    @Before("execution(* com.example.AOPDemo" +
-            ".service..*Student*(..))")
-    public void before(JoinPoint joinPoint) {
-        System.out.println("before executing " + joinPoint.getSignature().getName());
-
+//    @Before("execution(* com.example.AOPDemo" +
+//            ".service..*Student*(..))")
+//    public void before(JoinPoint joinPoint) {
+//        System.out.println("before executing " + joinPoint.getSignature().getName());
+//
+//    }
+    @After("within(com.example.AOPDemo.service." +
+            ".*) && execution(* com.example" +
+            ".AOPDemo.service..get*(..))")
+    public void logAfter(JoinPoint joinPoint) {
+        System.out.println("Logging after method call: " + joinPoint.getSignature().getName());
     }
 }
 
