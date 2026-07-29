@@ -10,6 +10,7 @@ public class StudentService {
 
     public studentDto createStudent(studentDto studentDto) {
         studentDto.setName(studentDto.getName());
+
         studentDto.setAge(studentDto.getAge());
 
         System.out.println("Creating student: " + studentDto.getName());
