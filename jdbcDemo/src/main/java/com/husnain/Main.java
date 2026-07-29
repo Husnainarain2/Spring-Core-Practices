@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         StudentRepositry  studentRepositry=new StudentRepositry();
-        studentRepositry.createStudent();
+//        studentRepositry.createStudent();
+        studentRepositry.updateStudent();
     }
 }

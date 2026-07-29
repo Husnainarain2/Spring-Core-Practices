@@ -32,5 +32,25 @@ public class StudentRepositry {
     }
     }
 
+    public void updateStudent(){
+        try{
+
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement statement = conn.createStatement();
+
+            String sql="UPDATE students SET " +
+                    "name='Husnain Khan', age=22 WHERE id=1;";
+            statement.executeUpdate(sql);
+            System.out.println("Update " +
+                    " to database successfully");
+
+        } catch (
+                SQLException e) {
+            System.out.println("Connection Failed! Check output console");
+            e.printStackTrace();
+
+        }
+    }
+
 
 }
