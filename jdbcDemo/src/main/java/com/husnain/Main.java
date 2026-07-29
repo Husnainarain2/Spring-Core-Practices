@@ -13,6 +13,8 @@ public class Main {
 
         StudentRepositry  studentRepositry=new StudentRepositry();
 //        studentRepositry.createStudent();
-        studentRepositry.updateStudent();
+//        studentRepositry.updateStudent();
+//        studentRepositry.deleteStudent();
+        studentRepositry.readStudent();
     }
 }

@@ -1,9 +1,8 @@
 package com.husnain.repositry;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.husnain.model.Student;
+
+import java.sql.*;
 
 public class StudentRepositry {
 
@@ -23,7 +22,7 @@ public class StudentRepositry {
                     "VALUES ('Husnain', 21);";
             statement.executeUpdate(sql);
         System.out.println("Connected to database successfully");
-
+            conn.close();
     } catch (
     SQLException e) {
         System.out.println("Connection Failed! Check output console");
@@ -43,7 +42,7 @@ public class StudentRepositry {
             statement.executeUpdate(sql);
             System.out.println("Update " +
                     " to database successfully");
-
+            conn.close();
         } catch (
                 SQLException e) {
             System.out.println("Connection Failed! Check output console");
@@ -52,5 +51,58 @@ public class StudentRepositry {
         }
     }
 
+    public void deleteStudent() {
+        try {
+
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement statement = conn.createStatement();
+
+            String sql = "DELETE FROM students WHERE id=1;";
+            statement.executeUpdate(sql);
+            System.out.println("Delete " +
+                    " from database successfully");
+            conn.close();
+        } catch (
+                SQLException e) {
+            System.out.println("Connection Failed! Check output console");
+            e.printStackTrace();
+
+        }
+    }
+        public void readStudent(){
+            try{
+
+                Connection conn = DriverManager.getConnection(url, user, password);
+                Statement statement = conn.createStatement();
+
+                String sql="SELECT name,age,id " +
+                        "FROM students WHERE id=2;";
+                ResultSet rs = statement.executeQuery(sql);
+                rs.next();
+                Student student = mapRow(rs);
+                System.out.println(student);
+                conn.close();
+            } catch (
+                    SQLException e) {
+                System.out.println("Connection Failed! Check output console");
+                e.printStackTrace();
+
+
+        }
+
+    }
+
+    private Student mapRow(ResultSet rs){
+
+        Student student = new Student();
+        try {
+            student.setName(rs.getString("name"));
+            student.setAge(rs.getInt("age"));
+            student.setId(rs.getInt("id"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return student;
+    }
 
 }
