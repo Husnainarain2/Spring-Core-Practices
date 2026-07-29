@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LoggingAspects {
+//    @Pointcut("within(com.example.AOPDemo.service." +
+//            ".*) && execution(* com.example" +
+//            ".AOPDemo.service..get*(..))")
+//    public void TwoAspects(){
+//        // empty body
+//    }
 
 //    @Before("execution(String com.example.AOPDemo.service.StudentService.createStudent())")
 //    public void logCreateStudent(JoinPoint joinPoint) {
@@ -82,11 +88,27 @@ public class LoggingAspects {
 //        System.out.println("before executing " + joinPoint.getSignature().getName());
 //
 //    }
-    @After("within(com.example.AOPDemo.service." +
-            ".*) && execution(* com.example" +
-            ".AOPDemo.service..get*(..))")
-    public void logAfter(JoinPoint joinPoint) {
-        System.out.println("Logging after method call: " + joinPoint.getSignature().getName());
+
+//    @After("com.example.AOPDemo.aspects" +
+//            ".AspectsReuse.TwoAspects()")
+//    public void logAfter(JoinPoint joinPoint) {
+//        System.out.println("Logging after method call: " + joinPoint.getSignature().getName());
+//    }
+
+  @Around("@annotation(com.example.AOPDemo" +
+          ".annotations.TimeExecutionAnnotation)")
+    public Object measureTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        Long startTime = System.currentTimeMillis();
+
+        try {
+           return joinPoint.proceed();
+        }
+        finally {
+            Long endTime = System.currentTimeMillis();
+            Long executionTime = endTime - startTime;
+            System.out.println("Logging after " +
+                    "method call: " + joinPoint.getSignature().getName()+":"+ executionTime);
+        }
     }
 }
 
