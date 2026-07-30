@@ -1,5 +1,6 @@
 package com.husnain;
 
+import com.husnain.model.Student;
 import com.husnain.repositry.StudentRepositry;
 
 import java.sql.Connection;
@@ -12,9 +13,11 @@ public class Main {
     public static void main(String[] args) {
 
         StudentRepositry  studentRepositry=new StudentRepositry();
-//        studentRepositry.createStudent();
-//        studentRepositry.updateStudent();
-//        studentRepositry.deleteStudent();
-        studentRepositry.readStudent();
+//        studentRepositry.createStudent(new Student(1,"Husnain", 22));
+//        studentRepositry.readAllStudent();
+
+//        studentRepositry.updateStudent(new Student(2,"Husnain", 23), 2);
+        studentRepositry.deleteStudent(3);
+
     }
 }

@@ -3,6 +3,7 @@ package com.husnain.repositry;
 import com.husnain.model.Student;
 
 import java.sql.*;
+import java.util.List;
 
 public class StudentRepositry {
 
@@ -11,18 +12,27 @@ public class StudentRepositry {
     String user = "root";
     String password = "Husnain786";
 
-    public void createStudent(){
+    public void createStudent(Student student){
 
-        try{
+            String sql= """
+                    INSERT INTO students(name, age)
+                    VALUES(?, ?)
+""";
 
-        Connection conn = DriverManager.getConnection(url, user, password);
-            Statement statement = conn.createStatement();
+        try(Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement statement =
+                    conn.prepareStatement(sql)) {
 
-            String sql="INSERT INTO students (name, age)\n" +
-                    "VALUES ('Husnain', 21);";
-            statement.executeUpdate(sql);
-        System.out.println("Connected to database successfully");
-            conn.close();
+            statement.setString(1, student.getName());
+            statement.setInt(2, student.getAge());
+
+          int affectedRow=
+                  statement.executeUpdate();
+          if (affectedRow==1){
+              System.out.println("Create Student successful");
+          }else {
+              System.out.println("Create Student failed");
+          }
     } catch (
     SQLException e) {
         System.out.println("Connection Failed! Check output console");
@@ -31,18 +41,34 @@ public class StudentRepositry {
     }
     }
 
-    public void updateStudent(){
-        try{
+    public void updateStudent(Student student,
+                              int id){
+        String sql= """
 
-            Connection conn = DriverManager.getConnection(url, user, password);
-            Statement statement = conn.createStatement();
+                UPDATE students
+                    SET name = ?,
+                        age = ?
+                    WHERE id = ?
+              """;
+        try(Connection conn = DriverManager.getConnection(url, user, password);
+         PreparedStatement  statement = conn.prepareStatement(sql);
+        ){
+            statement.setString(1, student.getName());
+            statement.setInt(2, student.getAge());
+            statement.setInt(3, id);
+            int affectedRow= statement.executeUpdate(
 
-            String sql="UPDATE students SET " +
-                    "name='Husnain Khan', age=22 WHERE id=1;";
-            statement.executeUpdate(sql);
+            );
+            if (affectedRow==1){
+
             System.out.println("Update " +
                     " to database successfully");
-            conn.close();
+            }
+            else {
+                System.out.println("Update " +
+                        " to database failed");
+            }
+
         } catch (
                 SQLException e) {
             System.out.println("Connection Failed! Check output console");
@@ -51,17 +77,23 @@ public class StudentRepositry {
         }
     }
 
-    public void deleteStudent() {
-        try {
+    public void deleteStudent(int id) {
+        String sql = """
+                DELETE FROM students
+                WHERE id = ?
+""";
+        try(Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement statement = conn.prepareStatement(sql)
+        ) {
+            statement.setInt(1, id);
+            int affectedRow= statement.executeUpdate();
+            if (affectedRow==1){
 
-            Connection conn = DriverManager.getConnection(url, user, password);
-            Statement statement = conn.createStatement();
-
-            String sql = "DELETE FROM students WHERE id=1;";
-            statement.executeUpdate(sql);
-            System.out.println("Delete " +
-                    " from database successfully");
-            conn.close();
+            System.out.println("Delete " + id + " from database successfully");
+            }
+            else {
+                System.out.println("Delete " + id + " from database failed");
+            }
         } catch (
                 SQLException e) {
             System.out.println("Connection Failed! Check output console");
@@ -69,19 +101,49 @@ public class StudentRepositry {
 
         }
     }
-        public void readStudent(){
-            try{
+        public void readStudentByID(int id){
+        String sql = """
+                SELECT name, age, id
+                FROM students
+                WHERE id = ?
+                """;
+            try(Connection conn = DriverManager.getConnection(url, user, password);
+                PreparedStatement statement =
+                        conn.prepareStatement(sql);
+            ) {
+               statement.setInt(1, id);
+                try (ResultSet resultSet=
+                             statement.executeQuery()){
+                    if (resultSet.next()){
+                        Student student= mapRow(resultSet);
+                        System.out.println(student);
+                    }else {
+                        System.out.println("Student with id " + id + " not found");
+                }
+                }
+            } catch (
+                    SQLException e) {
+                System.out.println("Connection Failed! Check output console");
+            e.printStackTrace();
 
-                Connection conn = DriverManager.getConnection(url, user, password);
-                Statement statement = conn.createStatement();
+        }
+    }
+        public void readAllStudent(){
+        String sql= """
+               SELECT name, age, id
+                FROM students
+               """;
+            try(Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement statement=conn.prepareStatement(sql);){
+                try (ResultSet resultSet=statement.executeQuery()){
+                    List<Student> students= new java.util.ArrayList<>();
+                    while (resultSet.next()){
+                        Student student= mapRow(resultSet);
+                        students.add(student);
+                        System.out.println(student);
+                    }
 
-                String sql="SELECT name,age,id " +
-                        "FROM students WHERE id=2;";
-                ResultSet rs = statement.executeQuery(sql);
-                rs.next();
-                Student student = mapRow(rs);
-                System.out.println(student);
-                conn.close();
+                }
             } catch (
                     SQLException e) {
                 System.out.println("Connection Failed! Check output console");
