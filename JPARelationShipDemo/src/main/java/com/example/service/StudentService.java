@@ -18,10 +18,12 @@ public class StudentService {
 
     }
     @Transactional
-    public void save(Student student, Long deptId) {
-        Department department =
-                departmentRepository.findById(deptId);
+    public void save(Student student, String deptName) {
+       Department department =new Department();
+       department.setName(deptName);
+        department.getStudents().add(student);
         student.setDepartment(department);
+       departmentRepository.save(department);
         studentRepository.save(student);
     }
     @Transactional

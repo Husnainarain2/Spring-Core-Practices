@@ -15,8 +15,8 @@ public class StudentController {
         this.studentService = studentService;
     }
     @PostMapping
-    public ResponseEntity<String> createStudent(@RequestParam Long deptId, @RequestBody Student student) {
-        studentService.save(student,deptId);
+    public ResponseEntity<String> createStudent(@RequestParam String deptName, @RequestBody Student student) {
+        studentService.save(student,deptName);
         return ResponseEntity.ok("Student created successfully");
     }
     @GetMapping("/{id}")
