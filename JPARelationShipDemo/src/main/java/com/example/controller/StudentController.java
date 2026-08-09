@@ -19,17 +19,6 @@ public class StudentController {
         studentService.save(student,deptId);
         return ResponseEntity.ok("Student created successfully");
     }
-    @GetMapping()
-    public ResponseEntity<Student> getAllStudents(@RequestParam Long Id) {
-     Student result=
-             studentService.getById(Id);
-     return ResponseEntity.ok(result);
-    }
-    @GetMapping("/all")
-    public ResponseEntity<List<Student>> getAllStudents() {
-        List<Student> students=
-                studentService.getAll();
-        return ResponseEntity.ok(students);
-    }
+
 
 }
