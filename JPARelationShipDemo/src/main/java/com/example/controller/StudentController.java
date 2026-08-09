@@ -28,6 +28,11 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateStudent(@PathVariable Long id, @RequestBody Student student){
+        studentService.updateStudent(id,student);
+        return ResponseEntity.ok("Student updated successfully");
+    }
 
 
 }
