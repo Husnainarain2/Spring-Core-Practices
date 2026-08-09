@@ -19,6 +19,15 @@ public class StudentController {
         studentService.save(student,deptId);
         return ResponseEntity.ok("Student created successfully");
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable Long id){
+        Student student = studentService.getStudentById(id);
+        if (student != null) {
+            return ResponseEntity.ok(student);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 }

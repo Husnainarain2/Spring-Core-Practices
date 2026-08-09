@@ -24,5 +24,9 @@ public class StudentService {
         student.setDepartment(department);
         studentRepository.save(student);
     }
+    @Transactional
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id);
+    }
 
 }
