@@ -22,10 +22,17 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Student> students=new ArrayList<>();
 
-    public Department(Long id, String name) {
+    @OneToMany(mappedBy = "department")
+    private List<Course> courses=new ArrayList<>();
+
+    @OneToMany(mappedBy = "department")
+    private List<Teacher> teachers=new ArrayList<>();
+
+    public Department(Long id, String name, List<Student> students, List<Course> courses, List<Teacher> teachers) {
         this.id = id;
         this.name = name;
+        this.students = students;
+        this.courses = courses;
+        this.teachers = teachers;
     }
-
-
 }

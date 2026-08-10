@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -15,19 +17,21 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private int age;
+    private String name;
     private String email;
     @ManyToOne
     @JoinColumn(name = "dept-id")
     private Department department;
 
-    public Student(String firstName, String lastName, int age, String email, Department department) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    @OneToMany
+    @OneToMany(mappedBy = "student")
+    private List<Enrollment> enrollments;
+
+    public Student(Long id, String name, String email, Department department, List<Enrollment> enrollments) {
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.department = department;
+        this.enrollments = enrollments;
     }
 }
