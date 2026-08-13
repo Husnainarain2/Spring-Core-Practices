@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.dto.DepartmentRequestDto;
 import com.example.model.Department;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
