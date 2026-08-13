@@ -20,5 +20,5 @@ public class Teacher {
     private Department department;
 
     @OneToMany(mappedBy = "teacher")
-    private List<Teacher> teachers;
+    private List<Course> courses;
 }

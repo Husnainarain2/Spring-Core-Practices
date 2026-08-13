@@ -23,7 +23,6 @@ public class Student {
     @JoinColumn(name = "dept-id")
     private Department department;
 
-    @OneToMany
     @OneToMany(mappedBy = "student")
     private List<Enrollment> enrollments;
 
