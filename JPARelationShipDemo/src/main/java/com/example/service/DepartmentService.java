@@ -1,7 +1,7 @@
 package com.example.service;
 
-import com.example.dto.DepartmentRequestDto;
-import com.example.dto.DepartmentResponseDto;
+import com.example.dto.request.DepartmentRequestDto;
+import com.example.dto.response.DepartmentResponseDto;
 import com.example.model.Department;
 import com.example.repository.DepartmentRepository;
 import jakarta.transaction.Transactional;

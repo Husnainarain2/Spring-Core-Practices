@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.dto.DepartmentRequestDto;
-import com.example.dto.DepartmentResponseDto;
+import com.example.dto.request.DepartmentRequestDto;
+import com.example.dto.response.DepartmentResponseDto;
 import com.example.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
