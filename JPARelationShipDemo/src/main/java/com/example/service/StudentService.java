@@ -20,10 +20,8 @@ public class StudentService {
 
     @Transactional
     public void addStudent(StudentRequestDto student) {
-        Department department = departmentRepository.findById(student.getDepartmentId());
-        if (department == null) {
-            throw new RuntimeException("Department not found");
-        }
+        Department department =
+                departmentRepository.findById(student.getDepartmentId()).orElseThrow(() -> new IllegalArgumentException("Department not found with id: " + student.getDepartmentId()));
         Student student1= new Student();
         student1.setName(student.getName());
         student1.setEmail(student.getEmail());

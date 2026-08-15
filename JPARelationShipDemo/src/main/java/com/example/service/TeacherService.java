@@ -18,10 +18,8 @@ public class TeacherService {
     }
 
     public void createTeacher(  TeacherRequestDto teacherResquestDto) {
-        Department department = departmentRepository.findById(teacherResquestDto.getDepartmentId());
-        if (department == null) {
-            throw new IllegalArgumentException("Department not found with id: " + teacherResquestDto.getDepartmentId());
-        }
+        Department department = departmentRepository.findById(teacherResquestDto.getDepartmentId())
+                .orElseThrow(() -> new IllegalArgumentException("Department not found with id: " + teacherResquestDto.getDepartmentId()));
 
         Teacher teacher = new Teacher();
         teacher.setName(teacherResquestDto.getName());

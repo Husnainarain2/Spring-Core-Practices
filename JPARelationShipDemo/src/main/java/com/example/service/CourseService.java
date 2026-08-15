@@ -9,6 +9,8 @@ import com.example.repository.DepartmentRepository;
 import com.example.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CourseService {
     private final CourseRepository courseRepository;
@@ -23,7 +25,7 @@ public class CourseService {
 
     public void createCourse(CourseRequestDto courseRequestDto) {
         Department department =
-                departmentRepository.findById(courseRequestDto.getDepartmentId());
+                departmentRepository.findById(courseRequestDto.getDepartmentId()).orElseThrow(() -> new IllegalArgumentException("Department not found with id: " + courseRequestDto.getDepartmentId()));
         Teacher teacher = teacherRepository.findById(courseRequestDto.getTeacherId());
         Course course = new Course();
         course.setName(courseRequestDto.getName());

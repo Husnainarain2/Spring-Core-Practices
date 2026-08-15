@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.Mapper.EntityMapper;
 import com.example.dto.request.DepartmentRequestDto;
 import com.example.dto.response.DepartmentResponseDto;
 import com.example.model.Department;
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class DepartmentService {
     private DepartmentRepository departmentRepository;
-    public DepartmentService(DepartmentRepository departmentRepository) {
+    private EntityMapper entityMapper;
+    public DepartmentService(DepartmentRepository departmentRepository, EntityMapper entityMapper) {
         this.departmentRepository = departmentRepository;
+        this.entityMapper = entityMapper;
     }
 
     @Transactional
@@ -23,14 +26,7 @@ public class DepartmentService {
     }
 @Transactional
     public DepartmentResponseDto getDepartmentById(Long id) {
-        Department department =
-                departmentRepository.findById(id);
-        if (department == null) {
-            return null;
-        }
-        DepartmentResponseDto departmentResponseDto = new DepartmentResponseDto();
-        departmentResponseDto.setId(department.getId());
-        departmentResponseDto.setName(department.getName());
-        return departmentResponseDto;
+        Department department = departmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Department not found"));
+        return entityMapper.toDepartmentResponseDto(department);
     }
 }
