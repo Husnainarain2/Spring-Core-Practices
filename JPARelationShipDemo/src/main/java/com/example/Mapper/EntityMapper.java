@@ -14,9 +14,9 @@ public class EntityMapper {
         DepartmentResponseDto departmentResponseDto = new DepartmentResponseDto();
         departmentResponseDto.setId(department.getId());
         departmentResponseDto.setName(department.getName());
-        departmentResponseDto.setStudents(department.getStudents() == null ? Collections.emptyList() : department.getStudents().stream().map(this::toStudentResponseDto).toList());
-        departmentResponseDto.setTeachers(department.getTeachers().stream().map(this::toTeacherResponseDto).toList());
-        departmentResponseDto.setCourses(department.getCourses().stream().map(this::toCourseResponseDto).toList());
+        departmentResponseDto.setStudents(department.getStudents() == null ? Collections.emptyList() : department.getStudents().stream().map(this::toStudentSummaryDto).toList());
+        departmentResponseDto.setTeachers(department.getTeachers() == null ? Collections.emptyList() : department.getTeachers().stream().map(this::toTeacherSummaryDto).toList());
+        departmentResponseDto.setCourses(department.getCourses() == null ? Collections.emptyList() : department.getCourses().stream().map(this::toCourseSummaryDto).toList());
         return departmentResponseDto;
     }
 
@@ -75,6 +75,27 @@ public class EntityMapper {
             enrollmentResponseDto.setCourseName(enrollment.getCourse().getName());
         }
         return enrollmentResponseDto;
+    }
+
+
+    public StudentSummaryDto toStudentSummaryDto(Student student) {
+        StudentSummaryDto studentSummaryDto = new StudentSummaryDto();
+        studentSummaryDto.setId(student.getId());
+        studentSummaryDto.setName(student.getName());
+        studentSummaryDto.setEmail(student.getEmail());
+        return studentSummaryDto;
+    }
+    public TeacherSummaryDto toTeacherSummaryDto(Teacher teacher) {
+        TeacherSummaryDto teacherSummaryDto = new TeacherSummaryDto();
+        teacherSummaryDto.setId(teacher.getId());
+        teacherSummaryDto.setName(teacher.getName());
+        return teacherSummaryDto;
+    }
+    public CourseSummaryDto toCourseSummaryDto(Course course) {
+        CourseSummaryDto courseSummaryDto = new CourseSummaryDto();
+        courseSummaryDto.setId(course.getId());
+        courseSummaryDto.setName(course.getName());
+        return courseSummaryDto;
     }
 }
 

@@ -4,14 +4,11 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class DepartmentResponseDto {
     private long id;
     private String name;
-
-    private List<StudentResponseDto> students;
-    private List<TeacherResponseDto> teachers;
-    private List<CourseResponseDto> courses;
+    private List<StudentSummaryDto> students;
+    private List<TeacherSummaryDto> teachers;
+    private List<CourseSummaryDto> courses;
 }
