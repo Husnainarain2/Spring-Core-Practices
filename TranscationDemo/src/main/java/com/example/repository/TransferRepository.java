@@ -1,4 +1,7 @@
 package com.example.repository;
 
-public class TransferRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TransferRepository extends org.springframework.data.jpa.repository.JpaRepository<com.example.model.TransferRecord, Long> {
 }

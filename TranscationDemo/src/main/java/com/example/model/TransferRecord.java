@@ -25,4 +25,10 @@ public class TransferRecord {
     private LocalDateTime transferTime;
 
 
+    public TransferRecord(long from, long to, BigDecimal amount, LocalDateTime now) {
+        this.fromAccountId = from;
+        this.toAccountId = to;
+        this.amount = amount;
+        this.transferTime = now;
+    }
 }
