@@ -23,21 +23,8 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto) {
-        UserResponseDto response = authService.register(userRequestDto);
-        return ResponseEntity.ok(response);
+       UserResponseDto userResponseDto = authService.register(userRequestDto);
+        return ResponseEntity.ok(userResponseDto);
     }
-    @PostMapping("/authenticate")
-    public ResponseEntity<String> authenticate(@RequestBody UserRequestDto userRequestDto) {
-        boolean isAuthenticated = authService.authenticate(userRequestDto);
-        if (isAuthenticated) {
-            return ResponseEntity.ok("Authentication successful");
-        } else {
-            return ResponseEntity.status(401).body("Authentication failed");
-        }
 
-    }
-    @GetMapping("/token")
-    public CsrfToken getToken(CsrfToken csrfToken) {
-        return csrfToken;
-    }
 }

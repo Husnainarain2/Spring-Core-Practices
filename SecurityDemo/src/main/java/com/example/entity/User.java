@@ -3,6 +3,8 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 public class User {
@@ -25,6 +27,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private java.util.Set<Role> roles;
+    private Set<Role> roles=new java.util.HashSet<>();
 
 }
