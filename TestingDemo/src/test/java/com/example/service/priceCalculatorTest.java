@@ -1,7 +1,10 @@
 package com.example.service;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class priceCalculatorTest {
     private priceCalculator priceCalculator;
@@ -11,10 +14,9 @@ public class priceCalculatorTest {
     }
     @Test
      void shouldCalculatePrice() {
-        double price=1000;
-        double discount=20;
+        double price = 1000;
+        double discount = 20;
         double finalPrice = priceCalculator.calculatePrice(price, discount);
-
-
+        assertEquals(800, finalPrice);
     }
 }
